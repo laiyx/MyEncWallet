@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大特保测试系统</title> 
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css"> 
+	<!-- My Styles-->
+	<link type="favicon" rel="shortcut icon" href="assets/favicon.ico" />
+	
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">track_changes</i> <strong>功能列表</strong></a>
+				
+		<div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+            </div>
+
+        </nav>
+
+	   <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="waves-effect waves-dark" href="index.html"><i class="fa fa-dashboard"></i> 主页</a>
+                    </li>
+
+
+                    <li class="active">
+                        <a href="#" class="active-menu waves-effect waves-dark"><i class="fa fa-sitemap"></i> 开放平台<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse in">
+                            <li>
+                                <a href="#">基本配置</a>
+                            </li>
+                            <li>
+                                <a href="#">接口测试</a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="interface">单个数据包发送</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">测试样例组</a>
+                                    </li>
+                                </ul>
+                            </li>
+							<li class="active">
+                                <a href="#">费率自动化</a>
+                            </li>
+							<li>
+                                <a href="#">H5</a>
+                            </li>
+                        </ul>
+                    </li>
+					<li>
+                        <a class="waves-effect waves-dark" href="#"><i class="fa fa-sitemap"></i>晶算师</a>
+						<ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">wap自动化</a>
+                            </li>
+						</ul>
+                    </li>
+					<li>
+                        <a class="waves-effect waves-dark" href="#"><i class="fa fa-sitemap"></i>保汇项目</a>
+						<ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">收银台</a>
+                            </li>
+							<li>
+                                <a href="#">聚合支付</a>
+                            </li>
+						</ul>
+                    </li>
+					<li>
+                        <a class="waves-effect waves-dark" href="#"><i class="fa fa-sitemap"></i>工具</a>
+						<ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">身份证生成器</a>
+                            </li>
+						</ul>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+      
+		<div id="page-wrapper">
+		    <div class="header"> 
+                        <h1 class="page-header">
+                            费率自动化
+                        </h1>
+						<ol class="breadcrumb">
+					  <li><a href="#">Home</a></li>
+					  <li><a href="#">费率自动化</a></li>
+					  <li class="active" id="current-pid">{{ product_id }}</li>
+					</ol> 
+									
+		    </div>
+			<div id="page-inner">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-action">产品基本信息</div>
+							<div class="card-content">
+								<div class="dataTables_wrapper form-inline" role="grid">
+									<div class="row">
+										<div class="col-sm-1 alert alert-info" style="text-align: center">
+											<strong>产 品 id</strong>
+										</div>
+										<div class="col-sm-1 alert">
+											<input type="text" id="product-id" value="{{product_id}}" style="text-align: center">	
+										</div>
+										<div class="col-sm-2 alert">
+											<button id="product-change" class="waves-effect waves-light btn">切换</button>
+										</div>
+										<div class="col-sm-6 " style="text-align: center">
+											{% if "product_name" in product_info %}
+											<h4>产 品 名 称：{{product_info["product_name"]}}</h4>
+											{% end %}
+										</div>
+									</div>
+									<!-- /. ROW  -->
+									<table  id="product-info" class="table table-striped table-bordered table-hover" >
+										{% for key in product_info %}
+										{% block key %}
+											<tr>
+												<th>{{ key}}</th>
+												<th>{{ product_info[key]}}</th>
+											</tr>
+										{% end %}
+										{% end %}
+									</table>
+								</div>
+								<textarea id="edit-area" class="form-inline alert alert-warning" style="min-height: 200px;resize: none;display: none;">
+									textarea
+								</textarea>
+								<div class="row">
+									<div class="col-sm-1">
+										<button id="info-edit" class="waves-effect waves-light btn" style="display: inline-block;">编辑</button>
+										<button id="info-save" class="waves-effect waves-light btn" style="display: none;">保存</button>
+									</div>
+									<div class="col-sm-1">
+										<button id="info-cancel" class="waves-effect waves-light btn" style="display: none;">取消</button>
+									</div>
+								</div>
+								<!-- /. ROW  -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /. ROW  -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-action">费率表</div>
+							<div class="card-content">
+								<div class="row">
+									<div class="col-sm-2 alert alert-info" style="text-align: center">
+										<strong>上传excel费率表</strong>
+									</div>
+									<div class="col-sm-2 alert alert-info" style="text-align: center">
+										<input type="file" id="excel-file">	
+									</div>
+									<div class="col-sm-2 alert">
+										<button id="product-excel" class="waves-effect waves-light btn">上传</button>
+									</div>
+								</div>
+								<div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+								<table class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>保额</th>
+											<th>保期</th>
+											<th>缴期</th>
+											<th>性别</th>
+											<th>社保</th>
+											<th>年龄</th>
+											<th>保费</th>
+										</tr>
+									</thead>
+										{% set i=0 %}
+										{% for rate in product_rate %}
+											{% set i+=1 %}
+										<tr>
+											<th>{{ i }}</th>
+											<th>{{ rate["amount"] }}</th>
+											<th>{{ rate["insured_period"] }}</th>
+											<th>{{ rate["pay_period"] }}</th>
+											<th>{{ rate["sex"] }}</th>
+											{% if "social_security" in rate%}
+											<th>{{ rate["social_security"] }}</th>
+											{% else %}
+											<th>-</th>
+											{% end %}
+											<th>{{ rate["age"] }}</th>
+											<th>{{ rate["excel_rate"]}}</th>
+										</tr>
+										{% end %}
+								</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /. ROW  -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-action">自动化测试</div>
+							<div class="card-content">
+								<div class="row">
+									<input type="hidden" id="auto-status" value="{{auto_info['status']}}"/>
+									<div class="col-sm-1" id="auto-button" style="display: none;">
+										<button id="auto-start" class="waves-effect waves-light btn" style="display: none;">开始</button>
+										<button id="auto-stop" class="waves-effect waves-light btn" style="display: none;">停止</button>
+										<button id="auto-continue" class="waves-effect waves-light btn" style="display: none;">继续</button>
+									</div>
+									<div class="col-sm-1">
+										<button id="auto-restart" class="waves-effect waves-light btn" style="display: none;">重新测试</button>
+									</div>
+									<div class="col-sm-1">
+										<button id="auto-retest" class="waves-effect waves-light btn" style="display: none;">失败重试</button>
+									</div>
+								</div>
+								<!-- /. ROW  -->
+								{% if auto_info['progress'] != "0" %}
+								<div class="col-sm-2 alert alert-info" style="text-align: center">
+									<strong>测试进度：</strong>
+								</div>
+								<div class="progress progress-striped active">
+									<div id="progress-bar" class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{auto_info['progress']}}" aria-valuemin="0" aria-valuemax="100" style="width: {{auto_info['progress']}}%">
+										<span class="sr-only">{{auto_info['progress']}}% Complete (success)</span>
+									</div>
+								</div>
+								{% end %}
+								<div class="dataTables_wrapper form-inline" role="grid">
+								<table class="table table-striped table-bordered table-hover" id="automation-table">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>时间</th>
+											<th>测试样例</th>
+											<th>测试结果</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+										{% set i=0 %}
+										{% for test in automation_test %}
+										<tr>
+											{% set i+=1 %}
+											<th>{{ test["number"] }}</th>
+											<th>{{ test["date"]+" "+test["time"] }}</th>
+											<th>{{ test["rate_info"] }}</th>
+											<th>{{ test["result"] }}</th>
+											<th>
+												<a href="#">详细信息</a> <a href="#">重测</a> <a href="#">跳转到接口</a>
+											</th>
+										</tr>
+										{% end %}
+								</table>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /. ROW  -->
+			</div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+	
+	<!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+	
+	<script src="assets/materialize/js/materialize.min.js"></script>
+	
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+	
+	
+	<script src="assets/js/easypiechart.js"></script>
+	<script src="assets/js/easypiechart-data.js"></script>
+	
+	 <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+	
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script> 
+	<!-- My Js -->
+	<script src="assets/js/automation.js"></script> 
+ 
+
+</body>
+
+</html>

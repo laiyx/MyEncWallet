@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大特保测试系统</title> 
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="assets/js/Lightweight-Chart/cssCharts.css"> 
+	<!-- My Styles-->
+	<link type="favicon" rel="shortcut icon" href="assets/favicon.ico" />
+	<link href="assets/css/interface.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">track_changes</i> <strong>功能列表</strong></a>
+				
+		<div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+            </div>
+
+        </nav>
+
+	   <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="waves-effect waves-dark" href="index.html"><i class="fa fa-dashboard"></i> 主页</a>
+                    </li>
+
+
+                    <li class="active">
+                        <a href="#" class="active-menu waves-effect waves-dark"><i class="fa fa-sitemap"></i> 开放平台<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse in">
+                            <li>
+                                <a href="#">基本配置</a>
+                            </li>
+                            <li  class="active">
+                                <a href="#">接口测试<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level collapse in">
+                                    <li class="active">
+                                        <a href="#">单个数据包发送</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">测试样例组</a>
+                                    </li>
+                                </ul>
+                            </li>
+							<li>
+                                <a href="automationtest">费率自动化</a>
+                            </li>
+							<li>
+                                <a href="#">H5</a>
+                            </li>
+                        </ul>
+                    </li>
+					<li>
+                        <a class="waves-effect waves-dark" href="#"><i class="fa fa-sitemap"></i>晶算师</a>
+						<ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">wap自动化</a>
+                            </li>
+						</ul>
+                    </li>
+					<li>
+                        <a class="waves-effect waves-dark" href="#"><i class="fa fa-sitemap"></i>保汇项目</a>
+						<ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">收银台</a>
+                            </li>
+							<li>
+                                <a href="#">聚合支付</a>
+                            </li>
+						</ul>
+                    </li>
+					<li>
+                        <a class="waves-effect waves-dark" href="#"><i class="fa fa-sitemap"></i>工具</a>
+						<ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">身份证生成器</a>
+                            </li>
+						</ul>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+      
+		<div id="page-wrapper">
+			<div class="header"> 
+                        <h1 class="page-header">
+                            单个数据包发送
+                        </h1>
+						<ol class="breadcrumb">
+					  <li><a href="#">Home</a></li>
+					  <li><a href="#">接口测试</a></li>
+					  <li class="active">单个数据包发送</li>
+					</ol> 
+									
+			</div>
+			<div id="page-inner">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<div class="card">
+							<div class="card-action">接口发送</div>
+							<div class="card-content">
+								<label>
+								<select id="select_id" name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm">
+									<option value="C2">C2：获取订单列表接口</option>
+									<option value="C3">C3：获取订单详情接口</option>
+									<option value="C4">C4：获取电子保单接口</option>
+									<option value="C5">C5：退保接口</option>
+									<option value="C6">C6：取消订单接口</option>
+									<option value="C7">C7：批量同步订单状态接口</option>
+									<option value="C8">C8：核保及生成订单接口</option>
+									<option value="C9">C9：核保、生成订单及出单异步接口</option>
+									<option value="C10">C10：核保、生成订单及出单同步接口</option>
+									<option value="C11">C11：核保接口</option>
+									<option value="C12">C12：根据大特保订单出单异步接口</option>
+									<option value="C13">C13：根据大特保订单出单同步接口</option>
+									<option value="C14">C14：获取订单支付请求URL接口</option>
+									<option value="C15">C15：保费试算接口</option>
+								</select>
+								</label>
+
+								<div id="div-C2" class="parameter-input" style="display:block">
+									<form class="send-form" action="interface/apisend" method="POST">
+									<input type="hidden" name="API_MARK" value="API_C2">
+									developerUserID:<input type="text" name="developerUserID" value="180000">
+									pageNum:<input type="text" name="pageNum" value="1">
+									pageSize:<input type="text" name="pageSize" value="10">
+									</form>
+								</div>
+								<div id="div-C3" class="parameter-input" style="display:none">
+									<form class="send-form" action="interface/apisend" method="POST">
+									<input type="hidden" name="API_MARK" value="API_C3">
+									datebao_id:<input type="text" name="id">
+									orderID:<input type="text" name="orderID">
+									developerUserID:<input type="text" name="developerUserID">
+									developerOrderID:<input type="text" name="developerOrderID" value="1">
+									</form>
+								</div>
+								<div id="div-C4" class="parameter-input" style="display:none">
+									<form class="send-form" action="interface/apisend" method="POST">
+									<input type="hidden" name="API_MARK" value="API_C4">
+									product_id:<input type="text" name="product_id">
+									datebao_id:<input type="text" name="id">
+									orderID:<input type="text" name="orderID">
+									developerUserID:<input type="text" name="developerUserID">
+									developerOrderID:<input type="text" name="developerOrderID" value="1">
+									</form>
+								</div>
+								<div id="div-C10" class="parameter-input" style="display:none">
+									<form class="send-form" action="interface/apisend" method="POST">
+									<input type="hidden" name="API_MARK" value="API_C4">
+									product_id:<input type="text" name="product_id">
+									datebao_id:<input type="text" name="id">
+									orderID:<input type="text" name="orderID">
+									developerUserID:<input type="text" name="developerUserID">
+									developerOrderID:<input type="text" name="developerOrderID" value="1">
+									</form>
+								</div>
+								<a class="waves-effect waves-light btn">发送</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<div class="card">
+							<div class="card-action">返回消息</div>
+							<div class="card-content">
+								<div class="col">
+									<ul class="tabs">
+										<li class="tab col s6"><a class="" href="#">原始</a></li>
+										<li class="tab col s6"><a class="" href="#">内容</a></li>
+									</ul>
+								</div>
+								<div class="clearBoth"></div>
+								<div id="rawdata" class="alert alert-warning">
+									null
+								</div>
+								<div id="textdata" class="col s12" style="display: none;">
+									 
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /. ROW  -->
+			</div>
+			<!-- /. PAGE INNER  -->    
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+	
+	<!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+	
+	<script src="assets/materialize/js/materialize.min.js"></script>
+	
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+	
+	
+	<script src="assets/js/easypiechart.js"></script>
+	<script src="assets/js/easypiechart-data.js"></script>
+	
+	 <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+	
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script> 
+	<!-- My Js -->
+	<script src="assets/js/interface.js"></script>
+
+</body>
+
+</html>
